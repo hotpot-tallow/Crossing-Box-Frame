@@ -1,0 +1,20 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/cwkj/workspace/track_vehicle4.0/devel/lib/python3/dist-packages",
+        "/home/cwkj/workspace/track_vehicle3.2/devel/lib/python3/dist-packages",
+        "/home/cwkj/workspace/track_vehicle3.1/devel/lib/python3/dist-packages",
+        "/home/cwkj/workspace/track_vehicle3.0/devel/lib/python3/dist-packages",
+        "/home/cwkj/workspace/track_vehicle2.0/devel/lib/python3/dist-packages",
+        "/home/cwkj/catkin_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/cwkj/workspace/track_vehicle4.0/devel/lib/python3/dist-packages",
+        "/home/cwkj/workspace/track_vehicle3.2/devel/lib/python3/dist-packages",
+        "/home/cwkj/workspace/track_vehicle3.1/devel/lib/python3/dist-packages",
+        "/home/cwkj/workspace/track_vehicle3.0/devel/lib/python3/dist-packages",
+        "/home/cwkj/workspace/track_vehicle2.0/devel/lib/python3/dist-packages",
+        "/home/cwkj/catkin_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}
