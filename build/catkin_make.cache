@@ -1,2 +1,0 @@
-rectangle
--DCATKIN_DEVEL_PREFIX=/home/cwkj/workspace/cross_box/devel -DCMAKE_INSTALL_PREFIX=/home/cwkj/workspace/cross_box/install -G Unix Makefiles

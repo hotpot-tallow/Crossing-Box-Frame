@@ -1,0 +1,6 @@
+rectangle
+/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/cmake.lock /home/ceadman111/Crossing-Box-Frame/devel/./cmake.lock
+/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/share/rectangle/cmake/rectangleConfig-version.cmake /home/ceadman111/Crossing-Box-Frame/devel/share/rectangle/cmake/rectangleConfig-version.cmake
+/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/share/rectangle/cmake/rectangleConfig.cmake /home/ceadman111/Crossing-Box-Frame/devel/share/rectangle/cmake/rectangleConfig.cmake
+/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/rectangle/cross_rectangle /home/ceadman111/Crossing-Box-Frame/devel/lib/rectangle/cross_rectangle
+/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/pkgconfig/rectangle.pc /home/ceadman111/Crossing-Box-Frame/devel/lib/pkgconfig/rectangle.pc

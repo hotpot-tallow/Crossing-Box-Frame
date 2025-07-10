@@ -1,0 +1,8 @@
+prefix=/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle
+
+Name: rectangle
+Description: Description of rectangle
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

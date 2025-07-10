@@ -1,8 +1,1 @@
-prefix=/home/cwkj/workspace/cross_box/devel
-
-Name: rectangle
-Description: Description of rectangle
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
+/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/pkgconfig/rectangle.pc

@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target cross_rectangle[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o[0m
+[ 66%] [32m[1mLinking CXX executable /home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/rectangle/cross_rectangle[0m
+[100%] Built target cross_rectangle

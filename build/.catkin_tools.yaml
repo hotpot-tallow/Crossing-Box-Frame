@@ -1,0 +1,6 @@
+devel_space: /home/ceadman111/Crossing-Box-Frame/devel
+install: false
+install_space: /home/ceadman111/Crossing-Box-Frame/install
+profile: default
+source_space: /home/ceadman111/Crossing-Box-Frame/src
+workspace: /home/ceadman111/Crossing-Box-Frame

@@ -67,14 +67,14 @@ set(rectangle_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(rectangle_SOURCE_PREFIX /home/cwkj/workspace/cross_box/src/rectangle)
-  set(rectangle_DEVEL_PREFIX /home/cwkj/workspace/cross_box/devel)
+  set(rectangle_SOURCE_PREFIX /home/ceadman111/Crossing-Box-Frame/src/rectangle)
+  set(rectangle_DEVEL_PREFIX /home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle)
   set(rectangle_INSTALL_PREFIX "")
   set(rectangle_PREFIX ${rectangle_DEVEL_PREFIX})
 else()
   set(rectangle_SOURCE_PREFIX "")
   set(rectangle_DEVEL_PREFIX "")
-  set(rectangle_INSTALL_PREFIX /home/cwkj/workspace/cross_box/install)
+  set(rectangle_INSTALL_PREFIX /home/ceadman111/Crossing-Box-Frame/install)
   set(rectangle_PREFIX ${rectangle_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/cwkj/workspace/cross_box/install/lib;/home/cwkj/workspace/track_vehicle4.0/devel/lib;/home/cwkj/workspace/track_vehicle3.2/devel/lib;/home/cwkj/workspace/track_vehicle3.1/devel/lib;/home/cwkj/workspace/track_vehicle3.0/devel/lib;/home/cwkj/workspace/track_vehicle2.0/devel/lib;/home/cwkj/catkin_ws/devel/lib;/home/cwkj/mavros_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/ceadman111/Crossing-Box-Frame/install/lib;/home/ceadman111/Crossing-Box-Frame/devel/lib;/home/ceadman111/catkin_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

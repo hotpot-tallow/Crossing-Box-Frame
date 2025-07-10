@@ -1,0 +1,10 @@
+[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:229:21:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[Kros::Subscriber state_sub[m[K’
+  229 |     ros::Subscriber [01;31m[Kstate_sub[m[K = nh.subscribe<mavros_msgs::State>
+      |                     [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:227:21:[m[K [01;36m[Knote: [m[K‘[01m[Kros::Subscriber state_sub[m[K’ previously declared here
+  227 |     ros::Subscriber [01;36m[Kstate_sub[m[K = nh.subscribe<geometry_msgs::PoseStamped>
+      |                     [01;36m[K^~~~~~~~~[m[K
+make[2]: *** [CMakeFiles/cross_rectangle.dir/build.make:63：CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:210：CMakeFiles/cross_rectangle.dir/all] 错误 2
+make: *** [Makefile:141：all] 错误 2

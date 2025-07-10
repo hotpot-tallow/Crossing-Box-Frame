@@ -1,4 +1,4 @@
-prefix=/home/cwkj/workspace/cross_box/install
+prefix=/home/ceadman111/Crossing-Box-Frame/install
 
 Name: rectangle
 Description: Description of rectangle
