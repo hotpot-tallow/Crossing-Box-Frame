@@ -16,6 +16,9 @@
 #include "PID_controller.h"
 
 #define ALTITUDE_TAKEOFF 5
+#define FRAME_VY 0.5
+#define FRAME_VZ 0
+
 float K[] = {277.191356, 0.0, 320.5, 0.0, 277.191356, 240.5, 0.0, 0.0, 1.0};
 mavros_msgs::State current_mode;
 PID_Controller *pos_control;
@@ -23,11 +26,14 @@ mavros_msgs::PositionTarget vel;
 ros::Publisher local_pub;
 bool land_flag = false;
 bool task = false;
-bool final_approach = false;
+int approach_step = 0;
 bool flag_init_position = false;
+ros::Time last_detect_frame;
 geometry_msgs::PoseStamped pose_mav_info;
 geometry_msgs::PoseStamped pose_start_to_through;
 geometry_msgs::PoseStamped init_position_take_off;
+int direction_y = 0;
+int direction_z = 0;
 
 void uav_control_vel(mavros_msgs::PositionTarget& vel_set){
     vel_set.coordinate_frame = mavros_msgs::PositionTarget::FRAME_BODY_NED;
@@ -107,7 +113,7 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
 
     if (!contours.empty())
     {
-        double max_area = 10.0;
+        double max_area = 0;
         largest_contour_index = -1;
 
         for (size_t i = 0; i < contours.size(); i++)
@@ -120,14 +126,22 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
             {
                 if (approxContour.size() == 4)
                 {
-                    max_area = area;
-                    largest_contour_index = i;
-                    ROS_INFO("目前面积：%f",max_area);
+                    cv::RotatedRect rect = cv::minAreaRect(approxContour);
+                    double rectArea = rect.size.width * rect.size.height;
+                    double areaRatio = area / rectArea;
+                    if (areaRatio > 0.9 && areaRatio < 1.1)
+                    {
+                        max_area = area;
+                        largest_contour_index = i;
+                        ROS_INFO("目前面积：%f",max_area);
+                    }
                 }
             }
-            if (max_area > 153683/4){
-                pose_start_to_through = pose_mav_info;
-                final_approach = true;
+            if (max_area > 65000/4){
+                if(approach_step != 3)
+                {
+                    approach_step = 2;
+                }
             }
         }
 
@@ -154,36 +168,140 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
     error_posix_x = center.x - original_center.x;
     error_posix_y = center.y - original_center.y;
     //<转换到机体坐标系计算>
-    error_y = error_posix_x * 0.01;
-    error_z = error_posix_y * 0.01;
-    ROS_INFO("PID误差,y = %.3f,z = %.3f",error_y,error_z);
+    error_y = error_posix_x * 0.03;
+    error_z = error_posix_y * 0.03;
+    // ROS_INFO("PID误差,y = %.3f,z = %.3f",error_y,error_z);
     //<PID控制>
     vel = pos_control->control(0, error_y, error_z);
-    vel.velocity.x = 0.3;
-    if(task && !final_approach){
+    vel.velocity.x = 0;
+    if(task && approach_step == 0){
         // ROS_INFO("无人机速度,x = %.3f,y = %.3f,z = %.3f",vel.velocity.x,vel.velocity.y,vel.velocity.z);
         if(largest_contour_index == -1)
         {
             ROS_INFO("None Frame");
+            vel.velocity.x = 0.6;
+            vel.velocity.y = 0;
+            vel.velocity.z = 0;
+            last_detect_frame = ros::Time::now();
+        }
+        else 
+        {
+            if(ros::Time::now() - last_detect_frame > ros::Duration(1.0))
             {
-                vel.velocity.x = 0.5;
-                vel.velocity.y = 0;
-                vel.velocity.z = 0;
+                approach_step = 1;
+                last_detect_frame = ros::Time::now();
+                ROS_INFO("approach_step:%d",approach_step);
             }
+            vel.velocity.x = 0;
         }
         uav_control_vel(vel);
     }
-    else if(final_approach)
+    else if(task && approach_step == 1)
     {
-        // ROS_INFO("Final_task");
-        if (pose_mav_info.pose.position.x - pose_start_to_through.pose.position.x < 5)
+        if(largest_contour_index == -1)
         {
-            vel.velocity.x = 1;
-            vel.velocity.y = 0;
-            vel.velocity.z = 0;
-            uav_control_vel(vel);
+            ROS_INFO("Lost_Frame");
+            vel.velocity.x = -0.1;
+            if(pose_mav_info.pose.position.y < 0)
+            {
+                vel.velocity.y = FRAME_VY * 1.1;
+            }
+            else
+            {
+                vel.velocity.y = - FRAME_VY * 1.1;
+            }
+            if(pose_mav_info.pose.position.z < 0)
+            {
+                vel.velocity.z = FRAME_VZ * 1.1;
+            }
+            else
+            {
+                vel.velocity.z = - FRAME_VZ * 1.1;
+            }
+        }
+        else if(task)
+        {
+            last_detect_frame = ros::Time::now();
+            vel.velocity.x = 0.3;
+            ROS_INFO("approach_step:%d",approach_step);
         }
         else
+        {
+            last_detect_frame = ros::Time::now();
+        }
+            uav_control_vel(vel);
+        
+    }
+    else if(task && approach_step == 2)
+    {
+        if(largest_contour_index == -1)
+        {
+            ROS_INFO("Lost_Frame");
+            vel.velocity.x = -0.1;
+            if(pose_mav_info.pose.position.y < 0)
+            {
+                vel.velocity.y = FRAME_VY * 1.1;
+            }
+            else
+            {
+                vel.velocity.y = - FRAME_VY * 1.1;
+            }
+            if(pose_mav_info.pose.position.z < 0)
+            {
+                vel.velocity.z = FRAME_VZ * 1.1;
+            }
+            else
+            {
+                vel.velocity.z = - FRAME_VZ * 1.1;
+            }
+            approach_step = 1;
+        }
+        else if(task)
+        {
+            last_detect_frame = ros::Time::now();
+            vel.velocity.x = 0;
+            // printf("approach_step:%d, velocity_y:%f, velocity_z:%f", approach_step, vel.velocity.y, vel.velocity.z);
+            direction_y = vel.velocity.y / fabs(vel.velocity.y);
+            direction_z = vel.velocity.z / fabs(vel.velocity.z);
+            /////// 根据已知框的移动范围，设定执行穿框的坐标范围 ////////
+            if(pose_mav_info.pose.position.y <= -0 && pose_mav_info.pose.position.y >= -3 && direction_y > 0)
+            {
+                ROS_INFO("%d,%d,%d",pose_mav_info.pose.position.y <= -0, pose_mav_info.pose.position.y >= -3, direction_y > 0);
+                approach_step = 3;
+                pose_start_to_through = pose_mav_info;
+            }
+            else
+            {
+                ROS_INFO("%d,%d,%d",pose_mav_info.pose.position.y <= -0, pose_mav_info.pose.position.y >= -3, direction_y > 0);
+            }
+            if(pose_mav_info.pose.position.y > 0 && pose_mav_info.pose.position.y <= 3 && direction_y < 0)
+            {
+                ROS_INFO("%d,%d,%d",pose_mav_info.pose.position.y > 0, pose_mav_info.pose.position.y <= 3, direction_y < 0);
+                approach_step = 3;
+                pose_start_to_through = pose_mav_info;
+            }
+            else
+            {
+                ROS_INFO("%d,%d,%d",pose_mav_info.pose.position.y > 0, pose_mav_info.pose.position.y <= 3, direction_y < 0);
+            }
+        }
+        else
+        {
+            last_detect_frame = ros::Time::now();
+        }
+            uav_control_vel(vel);
+    }
+    else if(task && approach_step == 3)
+    {
+        if (pose_mav_info.pose.position.x - pose_start_to_through.pose.position.x < 8)
+        {
+            vel.velocity.x = 1.5;
+            vel.velocity.y = direction_y * FRAME_VY;
+            vel.velocity.z = direction_z * FRAME_VZ;
+            ROS_INFO("Final_task:%f,%f", vel.velocity.y, vel.velocity.z);
+            uav_control_vel(vel);
+        }
+        else if(task)
         {
             if(pose_mav_info.pose.position.z < 0.3)
             {
@@ -197,6 +315,11 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
                 uav_control_vel(vel);
             }
         }
+        else
+        {
+            last_detect_frame = ros::Time::now();
+        }
+        ros::spinOnce();
     }
     
     // 显示带有边界框的原始图像

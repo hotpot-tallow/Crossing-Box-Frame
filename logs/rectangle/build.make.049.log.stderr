@@ -1,0 +1,10 @@
+[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:[m[K In function ‘[01m[Kvoid image_cb(const ConstPtr&)[m[K’:
+[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:232:51:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 3 has type ‘[01m[Kgeometry_msgs::Vector3_<std::allocator<void> >::_y_type[m[K’ {aka ‘[01m[Kdouble[m[K’} [[01;35m[K-Wformat=[m[K]
+  232 |             printf("approach_step:%d, velocity_y:[01;35m[K%d[m[K, velocity_z", approach_step, [32m[Kvel.velocity.y[m[K, vel.velocity.z);
+      |                                                  [01;35m[K~^[m[K                              [32m[K~~~~~~~~~~~~~~[m[K
+      |                                                   [01;35m[K|[m[K                                           [32m[K|[m[K
+      |                                                   [01;35m[Kint[m[K                                         [32m[Kgeometry_msgs::Vector3_<std::allocator<void> >::_y_type {aka double}[m[K
+      |                                                  [32m[K%f[m[K
+[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:232:20:[m[K [01;35m[Kwarning: [m[Ktoo many arguments for format [[01;35m[K-Wformat-extra-args[m[K]
+  232 |             printf([01;35m[K"approach_step:%d, velocity_y:%d, velocity_z"[m[K, approach_step, vel.velocity.y, vel.velocity.z);
+      |                    [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
