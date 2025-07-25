@@ -109,8 +109,8 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
     
     // 红色HSV
     cv::Mat mask1, mask2;
-    cv::inRange(hsv, cv::Scalar(0, 100, 50),   cv::Scalar(3, 255, 255), mask1);  
-    cv::inRange(hsv, cv::Scalar(177, 100, 50), cv::Scalar(180, 255, 255), mask2); 
+    cv::inRange(hsv, cv::Scalar(0, 70, 50),   cv::Scalar(15, 255, 255), mask1);  
+    cv::inRange(hsv, cv::Scalar(170, 70, 50), cv::Scalar(180, 255, 255), mask2); 
 
     mask = mask1 | mask2;
 

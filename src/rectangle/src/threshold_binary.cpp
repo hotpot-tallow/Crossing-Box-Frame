@@ -32,13 +32,14 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg)
     
 //// 三通道判别
     cv::Mat raw_image, hsv;
-    cv::GaussianBlur(cv_ptr->image, raw_image, cv::Size(5, 5), 0);
+    cv::GaussianBlur(cv_ptr->image, raw_image, cv::Size(11, 11), 0);
+    cv::GaussianBlur(raw_image, raw_image, cv::Size(11, 11), 0);
+    cv::GaussianBlur(raw_image, raw_image, cv::Size(5, 5), 0);
     cv::cvtColor(raw_image, hsv, cv::COLOR_BGR2HSV);
-    
     // 红色在 HSV 中有两个区间（色相环绕）
     cv::Mat mask1, mask2;
-    cv::inRange(hsv, cv::Scalar(0, 100, 50),   cv::Scalar(3, 255, 255), mask1);  
-    cv::inRange(hsv, cv::Scalar(177, 100, 50), cv::Scalar(180, 255, 255), mask2); 
+    cv::inRange(hsv, cv::Scalar(0, 100, 50),   cv::Scalar(6, 255, 255), mask1);  
+    cv::inRange(hsv, cv::Scalar(174, 100, 50), cv::Scalar(180, 255, 255), mask2); 
 
     mask = mask1 | mask2;
 
@@ -68,7 +69,7 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg)
                     cv::RotatedRect rect = cv::minAreaRect(approxContour);
                     double rectArea = rect.size.width * rect.size.height;
                     double areaRatio = area / rectArea;
-                    if (areaRatio > 0.6 && areaRatio < 1.2)
+                    if (areaRatio > 0.8 && areaRatio < 1.1)
                     {
                         max_area = area;
                         largest_contour_index = i;

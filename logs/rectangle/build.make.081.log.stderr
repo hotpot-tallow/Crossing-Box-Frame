@@ -1,8 +1,0 @@
-/usr/bin/ld: CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.o: in function `image_cb(boost::shared_ptr<sensor_msgs::Image_<std::allocator<void> > const> const&)':
-threshold_binary.cpp:(.text+0x1f): multiple definition of `image_cb(boost::shared_ptr<sensor_msgs::Image_<std::allocator<void> > const> const&)'; CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o:cross_rectangle.cpp:(.text+0x8f): first defined here
-/usr/bin/ld: CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.o: in function `main':
-threshold_binary.cpp:(.text+0x6a5): multiple definition of `main'; CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o:cross_rectangle.cpp:(.text+0x2674): first defined here
-collect2: error: ld returned 1 exit status
-make[2]: *** [CMakeFiles/cross_rectangle.dir/build.make:199：/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/rectangle/cross_rectangle] 错误 1
-make[1]: *** [CMakeFiles/Makefile2:210：CMakeFiles/cross_rectangle.dir/all] 错误 2
-make: *** [Makefile:141：all] 错误 2

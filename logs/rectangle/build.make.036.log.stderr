@@ -1,4 +1,0 @@
-[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:[m[K In function ‘[01m[Kvoid image_cb(const ConstPtr&)[m[K’:
-[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:184:24:[m[K [01;35m[Kwarning: [m[Ktoo many arguments for format [[01;35m[K-Wformat-extra-args[m[K]
-  184 |                 printf([01;35m[K"approach_step"[m[K, approach_step);
-      |                        [01;35m[K^~~~~~~~~~~~~~~[m[K

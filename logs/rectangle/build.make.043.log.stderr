@@ -1,8 +1,0 @@
-[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:[m[K In function ‘[01m[Kvoid image_cb(const ConstPtr&)[m[K’:
-[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:137:72:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[K:[m[K’ token
-  137 |                 ROS_INFO("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")[01;31m[K:[m[K
-      |                                                                        [01;31m[K^[m[K
-[01m[K/home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp:137:72:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K:[m[K’ token
-make[2]: *** [CMakeFiles/cross_rectangle.dir/build.make:63：CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o] 错误 1
-make[1]: *** [CMakeFiles/Makefile2:210：CMakeFiles/cross_rectangle.dir/all] 错误 2
-make: *** [Makefile:141：all] 错误 2
