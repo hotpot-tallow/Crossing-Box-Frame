@@ -138,9 +138,9 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(cross_rectangle
-#  src/cross_rectangle.cpp
+ src/cross_rectangle.cpp
  src/PID_controller.cpp
- src/threshold_binary.cpp
+#  src/threshold_binary.cpp
  )
 
 ## Rename C++ executable without prefix

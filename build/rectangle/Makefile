@@ -1234,32 +1234,32 @@ src/PID_controller.cpp.s:
 	$(MAKE) -f CMakeFiles/cross_rectangle.dir/build.make CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.s
 .PHONY : src/PID_controller.cpp.s
 
-src/threshold_binary.o: src/threshold_binary.cpp.o
+src/cross_rectangle.o: src/cross_rectangle.cpp.o
 
-.PHONY : src/threshold_binary.o
+.PHONY : src/cross_rectangle.o
 
 # target to build an object file
-src/threshold_binary.cpp.o:
-	$(MAKE) -f CMakeFiles/cross_rectangle.dir/build.make CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.o
-.PHONY : src/threshold_binary.cpp.o
+src/cross_rectangle.cpp.o:
+	$(MAKE) -f CMakeFiles/cross_rectangle.dir/build.make CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o
+.PHONY : src/cross_rectangle.cpp.o
 
-src/threshold_binary.i: src/threshold_binary.cpp.i
+src/cross_rectangle.i: src/cross_rectangle.cpp.i
 
-.PHONY : src/threshold_binary.i
+.PHONY : src/cross_rectangle.i
 
 # target to preprocess a source file
-src/threshold_binary.cpp.i:
-	$(MAKE) -f CMakeFiles/cross_rectangle.dir/build.make CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.i
-.PHONY : src/threshold_binary.cpp.i
+src/cross_rectangle.cpp.i:
+	$(MAKE) -f CMakeFiles/cross_rectangle.dir/build.make CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.i
+.PHONY : src/cross_rectangle.cpp.i
 
-src/threshold_binary.s: src/threshold_binary.cpp.s
+src/cross_rectangle.s: src/cross_rectangle.cpp.s
 
-.PHONY : src/threshold_binary.s
+.PHONY : src/cross_rectangle.s
 
 # target to generate assembly for a file
-src/threshold_binary.cpp.s:
-	$(MAKE) -f CMakeFiles/cross_rectangle.dir/build.make CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.s
-.PHONY : src/threshold_binary.cpp.s
+src/cross_rectangle.cpp.s:
+	$(MAKE) -f CMakeFiles/cross_rectangle.dir/build.make CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.s
+.PHONY : src/cross_rectangle.cpp.s
 
 # Help Target
 help:
@@ -1357,9 +1357,9 @@ help:
 	@echo "... src/PID_controller.o"
 	@echo "... src/PID_controller.i"
 	@echo "... src/PID_controller.s"
-	@echo "... src/threshold_binary.o"
-	@echo "... src/threshold_binary.i"
-	@echo "... src/threshold_binary.s"
+	@echo "... src/cross_rectangle.o"
+	@echo "... src/cross_rectangle.i"
+	@echo "... src/cross_rectangle.s"
 .PHONY : help
 
 

@@ -100,7 +100,7 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
 
     // // 二值化：cv::threshold(输入图像, 输出图像, 阈值, 最大值, 方法);
     // // cv::threshold(blurred_image, mask, 90, 255, cv::THRESH_BINARY_INV);
-    // cv::inRange(blurred_image, cv::Scalar(0), cv::Scalar(20), mask);
+    // cv::inRange(blurred_image, cv::Scalar(0), cv::Scalar(50), mask);
     
 //// 三通道判别
     cv::Mat raw_image, hsv;
@@ -278,7 +278,7 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
             if(pose_mav_info.pose.position.y <= -0 && pose_mav_info.pose.position.y >= -3 && direction_y > 0)
             {
                 ROS_INFO("%d,%d,%d",pose_mav_info.pose.position.y <= -0, pose_mav_info.pose.position.y >= -3, direction_y > 0);
-                approach_step = 3;
+                // approach_step = 3;
                 pose_start_to_through = pose_mav_info;
             }
             else
@@ -288,7 +288,7 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
             if(pose_mav_info.pose.position.y > 0 && pose_mav_info.pose.position.y <= 3 && direction_y < 0)
             {
                 ROS_INFO("%d,%d,%d",pose_mav_info.pose.position.y > 0, pose_mav_info.pose.position.y <= 3, direction_y < 0);
-                approach_step = 3;
+                // approach_step = 3;
                 pose_start_to_through = pose_mav_info;
             }
             else

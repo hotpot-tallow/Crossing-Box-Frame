@@ -57,9 +57,22 @@ include CMakeFiles/cross_rectangle.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cross_rectangle.dir/flags.make
 
+CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o: CMakeFiles/cross_rectangle.dir/flags.make
+CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o: /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ceadman111/Crossing-Box-Frame/build/rectangle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o -c /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp
+
+CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp > CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.i
+
+CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/cross_rectangle.cpp -o CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.s
+
 CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.o: CMakeFiles/cross_rectangle.dir/flags.make
 CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.o: /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/PID_controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ceadman111/Crossing-Box-Frame/build/rectangle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ceadman111/Crossing-Box-Frame/build/rectangle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.o -c /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/PID_controller.cpp
 
 CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.i: cmake_force
@@ -70,29 +83,16 @@ CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/PID_controller.cpp -o CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.s
 
-CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.o: CMakeFiles/cross_rectangle.dir/flags.make
-CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.o: /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/threshold_binary.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ceadman111/Crossing-Box-Frame/build/rectangle/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.o -c /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/threshold_binary.cpp
-
-CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/threshold_binary.cpp > CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.i
-
-CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ceadman111/Crossing-Box-Frame/src/rectangle/src/threshold_binary.cpp -o CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.s
-
 # Object files for target cross_rectangle
 cross_rectangle_OBJECTS = \
-"CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.o" \
-"CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.o"
+"CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o" \
+"CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.o"
 
 # External object files for target cross_rectangle
 cross_rectangle_EXTERNAL_OBJECTS =
 
+/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/rectangle/cross_rectangle: CMakeFiles/cross_rectangle.dir/src/cross_rectangle.cpp.o
 /home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/rectangle/cross_rectangle: CMakeFiles/cross_rectangle.dir/src/PID_controller.cpp.o
-/home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/rectangle/cross_rectangle: CMakeFiles/cross_rectangle.dir/src/threshold_binary.cpp.o
 /home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/rectangle/cross_rectangle: CMakeFiles/cross_rectangle.dir/build.make
 /home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/rectangle/cross_rectangle: /opt/ros/noetic/lib/libcv_bridge.so
 /home/ceadman111/Crossing-Box-Frame/devel/.private/rectangle/lib/rectangle/cross_rectangle: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.4.2.0
