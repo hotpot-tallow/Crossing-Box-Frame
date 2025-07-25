@@ -91,17 +91,28 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
         return;
     }
 
-    //图像预处理
-    //转换为灰度图，因为阈值分割通常在单通道图像上进行
-    cv::Mat gray_image;
-    cv::cvtColor(cv_ptr->image, gray_image, cv::COLOR_BGR2GRAY);
-    cv::Mat blurred_image;
-    cv::GaussianBlur(gray_image, blurred_image, cv::Size(5, 5), 0);
-    cv::Mat binary_image;
-    // 二值化：cv::threshold(输入图像, 输出图像, 阈值, 最大值, 方法);
-    cv::threshold(blurred_image, binary_image, 50, 255, cv::THRESH_BINARY_INV);
-    //cv::adaptiveThreshold(blurred_image, binary_image, 255, cv::ADAPTIVE_THRESH_GAUSSIAN_C, cv::THRESH_BINARY, 11, 2);
-    //cv::inRange(blurred_image, cv::Scalar(50), cv::Scalar(60), binary_image);
+    cv::Mat mask;
+//// 单通道判别
+    // cv::Mat gray_image;
+    // cv::cvtColor(cv_ptr->image, gray_image, cv::COLOR_BGR2GRAY);
+    // cv::Mat blurred_image;
+    // cv::GaussianBlur(gray_image, blurred_image, cv::Size(5, 5), 0);
+
+    // // 二值化：cv::threshold(输入图像, 输出图像, 阈值, 最大值, 方法);
+    // // cv::threshold(blurred_image, mask, 90, 255, cv::THRESH_BINARY_INV);
+    // cv::inRange(blurred_image, cv::Scalar(0), cv::Scalar(20), mask);
+    
+//// 三通道判别
+    cv::Mat raw_image, hsv;
+    cv::GaussianBlur(cv_ptr->image, raw_image, cv::Size(5, 5), 0);
+    cv::cvtColor(raw_image, hsv, cv::COLOR_BGR2HSV);
+    
+    // 红色HSV
+    cv::Mat mask1, mask2;
+    cv::inRange(hsv, cv::Scalar(0, 100, 50),   cv::Scalar(3, 255, 255), mask1);  
+    cv::inRange(hsv, cv::Scalar(177, 100, 50), cv::Scalar(180, 255, 255), mask2); 
+
+    mask = mask1 | mask2;
 
     //寻找轮廓
     std::vector<std::vector<cv::Point>> contours;
@@ -109,7 +120,7 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
     // cv::findContours(输入二值图, 输出轮廓, 层次结构, 模式, 方法);
     // cv::RETR_EXTERNAL: 只检测最外层的轮廓
     // cv::CHAIN_APPROX_SIMPLE: 压缩水平、垂直和对角线段，只保留其端点
-    cv::findContours(binary_image, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+    cv::findContours(mask, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
 
     if (!contours.empty())
     {
@@ -326,7 +337,7 @@ void image_cb(const sensor_msgs::Image::ConstPtr& msg){
     cv::circle(cv_ptr->image, original_center, 5, cv::Scalar(255, 0, 0), -1);
     cv::imshow("OPENCV_WINDOW_ORIGINAL", cv_ptr->image);
     // 显示二值化后的图像，方便调试
-    cv::imshow("OPENCV_WINDOW_BINARY", binary_image);
+    cv::imshow("OPENCV_WINDOW_BINARY", mask);
     cv::waitKey(3);
 }
 
